@@ -1,20 +1,25 @@
 import { useForm } from 'react-hook-form';
 import { Box, Button } from '@material-ui/core';
-import { TextField, PasswordField, FormTitle, AppLink } from '@components/ui';
-import Image from 'next/image';
+import {
+  TextField,
+  PasswordField,
+  FormBox,
+  FormTitle,
+  AppLink,
+} from '@components/ui';
 
 export const LoginForm = () => {
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data) => {};
 
   return (
-    <>
+    <FormBox>
       <FormTitle>{`Sign in to URB-E`}</FormTitle>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <Box display="flex" flexDirection="column">
           <TextField
-            error={errors.mail}
+            error={errors.email}
             name="email"
             type="email"
             inputRef={register({ required: true })}
@@ -23,27 +28,27 @@ export const LoginForm = () => {
             error={errors.password}
             ref={register({ required: true })}
           />
-          <Box display="flex" mt={1} mb={2}>
-            {'Forgot password?'}
+          <Box mt={1} mb={2}>
+            {'Forgot password? '}
             <AppLink href={'/reset-password'}>{'Reset Password'}</AppLink>
           </Box>
-          <Box display={'flex'}>
+          <Box display={'flex'} alignItems={'center'}>
             <input type="submit" hidden />
             <Button onClick={handleSubmit(onSubmit)}>{'Sign In'}</Button>
-            <Box px={4}>or</Box>
-            <a href={`${process.env.NEXT_PUBLIC_API_URL}/login/google&next=`}>
+            <Box px={1}>or</Box>
+            <a href={process.env.NEXT_PUBLIC_GOOGLE_LOGIN}>
               <Button
-                color={'secondary'}
+                color={'default'}
                 startIcon={
-                  <Image src="/management/google.svg" width={20} height={20} />
+                  <img src={'/google.svg'} width="19px" height="19px" />
                 }
               >
-                Google
+                Sign in with Google
               </Button>
             </a>
           </Box>
         </Box>
       </form>
-    </>
+    </FormBox>
   );
 };

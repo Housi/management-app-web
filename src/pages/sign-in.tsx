@@ -1,11 +1,18 @@
+import Head from 'next/head';
+import { RouteGuard } from '@components/ui';
+import { BrandLayout } from '@layouts/BrandLayout';
 import { LoginForm } from '@modules/auth/LoginForm';
-import { GuestLayout } from '@layouts/GuestLayout';
 
 const SignInView = () => {
   return (
-    <GuestLayout title="URB-E">
-      <LoginForm />
-    </GuestLayout>
+    <RouteGuard role={'user'}>
+      <Head>
+        <title>{'URB-E Login'}</title>
+      </Head>
+      <BrandLayout>
+        <LoginForm />
+      </BrandLayout>
+    </RouteGuard>
   );
 };
 

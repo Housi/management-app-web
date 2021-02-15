@@ -1,7 +1,16 @@
-create .env.local file (copy .env.example)
-yarn
+## URB-E Management App
 
-yarn dev
+1. run `yarn` (npm i yarn -g if you dont have it), it will install all dependancies, if NODE_ENV='production' then devDependancies are skipped
+
+2. create .env.local file (copy .env.example) - here you can change base path, asset prefix (assets are in `/public` folder) api url etc
+
+3.1 To run for developement (pretty heavy, can be faster after pre-build)
+`yarn dev` or `yarn build && yarn dev`
+
+3.2 To run prod app:
+This is a next app built with static export in mind, so `yarn build && yarn next export` will create 'out' directory which is just static files so can be served with any static server, for example `npx serve out`
+
+## NEXT Readme ↓
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 

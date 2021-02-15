@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -16,14 +16,14 @@
     "baseUrl": "./",
     "paths": {
       "@ui/*": ["src/components/ui/*"],
-      "@utils/*": ["src/components/utils/*"],
       "@modules/*": ["src/components/modules/*"],
       "@layouts/*": ["src/components/layouts/*"],
       "@components/*": ["src/components/*"],
       "@hooks/*": ["src/hooks/*"],
-      "@assets/*": ["public/*"],
       "@styles/*": ["src/styles/*"],
-      "@api/*": ["src/api/*"]
+      "@api/*": ["src/api/*"],
+      "@configs/*": ["src/configs/*"],
+      // "@assets/*": ["public/assets/*"], TODO: aliasing would need to be set up with babel transform to work with inline svg import 
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

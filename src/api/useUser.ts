@@ -1,5 +1,6 @@
-import useSWR from "swr";
+import useSWR, { responseInterface } from 'swr';
 
-type Response = unknown;
+type User = any;
 
-export const useUser = (): Response => useSWR(`/api/users/current`);
+export const useUser = (shouldFetch = true): responseInterface<User, Error> =>
+  useSWR(shouldFetch ? `/api/users/current` : null);
