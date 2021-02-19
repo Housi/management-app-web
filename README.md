@@ -7,8 +7,13 @@
 3.1 To run for developement (pretty heavy, can be faster after pre-build)
 `yarn dev` or `yarn build && yarn dev`
 
-3.2 To run prod app:
-This is a next app built with static export in mind, so `yarn build && yarn next export` will create 'out' directory which is just static files so can be served with any static server, for example `npx serve out`
+4 To run prod app:
+
+4.1. Best way to run it on prod is through `yarn start` then we can use `NEXT_PUBLIC_BASEPATH='/management'` to make it run under `localhost:3000/management` other port by running `yarn start -p 1111`
+
+4.2. Other way is to export it as static folder by running: `yarn build && yarn next export`. This will create 'out' directory which can be served with any static server, if you want to mount it under other path eg '/management' you would need to make an alias for that path to point to /out directory in your server config. And then don't set up basepath in env
+
+In case of unexpected errors during build remove `.next` directory and be sure to only build/export through yarn, it manages dependendencies correctly, other commands might cause problems with multiple react versions
 
 ## NEXT Readme ↓
 

@@ -5,7 +5,7 @@ import { BrandLayout } from '@layouts/BrandLayout';
 
 const ResetPasswordView = () => {
   return (
-    <RouteGuard role={'user'}>
+    <RouteGuard exclude={['user']}>
       <Head>
         <title>{'URB-E Reset password'}</title>
       </Head>

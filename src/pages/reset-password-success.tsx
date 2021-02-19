@@ -5,7 +5,7 @@ import { ResetSuccess } from '@modules/auth/ResetSuccess';
 
 const ResetSuccessView = () => {
   return (
-    <RouteGuard role={'user'}>
+    <RouteGuard exclude={['user']}>
       <Head>
         <title>{'URB-E Check email'}</title>
       </Head>
