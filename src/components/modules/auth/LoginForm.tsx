@@ -8,6 +8,8 @@ import {
   AppLink,
 } from '@components/ui';
 
+import GoogleIcon from '@assets/google.svg';
+
 export const LoginForm = () => {
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data) => {};
@@ -39,9 +41,7 @@ export const LoginForm = () => {
             <a href={process.env.NEXT_PUBLIC_GOOGLE_LOGIN}>
               <Button
                 color={'default'}
-                startIcon={
-                  <img src={'/google.svg'} width="19px" height="19px" />
-                }
+                startIcon={<GoogleIcon width="19px" height="19px" />}
               >
                 Sign in with Google
               </Button>

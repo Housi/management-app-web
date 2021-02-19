@@ -1,7 +1,5 @@
 import { colors, createMuiTheme } from '@material-ui/core';
-import { softShadows } from './shadows';
 import typography from './typography';
-import { TextField } from '@components/ui';
 
 export const theme = createMuiTheme({
   typography,
@@ -36,6 +34,11 @@ export const theme = createMuiTheme({
         textTransform: 'none',
       },
     },
+    MuiCssBaseline: {
+      // '@global': {
+      //   '@font-face': [raleway],
+      // },
+    },
   },
   palette: {
     type: 'light',
@@ -50,7 +53,6 @@ export const theme = createMuiTheme({
     action: {
       active: colors.blueGrey[600],
     },
-
     primary: {
       main: '#52CAF5',
     },
@@ -65,6 +67,7 @@ export const theme = createMuiTheme({
     MuiButton: {
       variant: 'contained',
       color: 'primary',
+      disableElevation: true,
     },
     MuiTextField: {
       placeholder: 'Enter',

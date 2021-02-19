@@ -3,6 +3,14 @@
     "next/babel"
   ],
   "plugins": [
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "@assets": "./src/assets"
+        }
+      }
+    ],
     "inline-react-svg",
     [
       "styled-components",
