@@ -30,7 +30,7 @@ export const ResetForm = () => {
           </Box>
           <Box>
             {`Remember your password? `}
-            <AppLink href={'/sign-in'}>Sign In</AppLink>
+            <AppLink href={'/login'}>Sign In</AppLink>
           </Box>
         </Box>
       </form>
