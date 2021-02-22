@@ -3,9 +3,9 @@ import { RouteGuard } from '@components/ui';
 import { BrandLayout } from '@layouts/BrandLayout';
 import { LoginForm } from '@modules/auth/LoginForm';
 
-const SignInView = () => {
+const LoginView = () => {
   return (
-    <RouteGuard role={'user'}>
+    <RouteGuard exclude={['user']}>
       <Head>
         <title>{'URB-E Login'}</title>
       </Head>
@@ -16,4 +16,4 @@ const SignInView = () => {
   );
 };
 
-export default SignInView;
+export default LoginView;

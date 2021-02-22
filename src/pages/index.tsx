@@ -5,7 +5,7 @@ import { Dashboard } from '@modules/dashboard/Dashboard';
 
 const DashboardView = () => {
   return (
-    <RouteGuard role={'guest'}>
+    <RouteGuard exclude={['guest']}>
       <Head>
         <title>{'URB-E Dashboard'}</title>
       </Head>

@@ -4,11 +4,33 @@
 
 2. create .env.local file (copy .env.example) - here you can change base path, asset prefix (assets are in `/public` folder) api url etc
 
-3.1 To run for developement (pretty heavy, can be faster after pre-build)
+3 To run for developement (pretty heavy, can be faster after pre-build)
 `yarn dev` or `yarn build && yarn dev`
 
-3.2 To run prod app:
-This is a next app built with static export in mind, so `yarn build && yarn next export` will create 'out' directory which is just static files so can be served with any static server, for example `npx serve out`
+4. To run prod app: 1. **Static export**
+   After setting up basepath, for example: NEXT_PUBLIC_BASEPATH='/management'
+   run: `yarn build && yarn next export`. This will create 'out' directory which can be served with any static server, so you can for example copy or symlink /out to /html/management
+   For example nginx
+
+```
+  server {
+        listen       80;
+        server_name  localhost;
+
+        index index.html;
+
+        location / {
+            try_files $uri $uri.html $uri/ =404;
+        }
+    }
+```
+
+    2.[Next](https://nextjs.org/) hybrid server
+
+`yarn build && yarn start -p 1111`
+then we can use `NEXT_PUBLIC_BASEPATH='/management'` to make it run under `localhost:1111/management` and then proxy pass to that port in nginx
+
+In case of unexpected errors during build remove `.next` directory and be sure to only build/export through yarn, it manages dependendencies correctly, other commands might cause problems with multiple react versions
 
 ## NEXT Readme ↓
 
