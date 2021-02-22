@@ -1,13 +1,13 @@
-import { Link as MUILink } from "@material-ui/core";
-import Link from "next/link";
-import { FunctionComponent } from "react";
+import { Link as MUILink } from '@material-ui/core';
+import Link from 'next/link';
+import { FunctionComponent } from 'react';
 
 type Props = {
   href?: string;
 };
 
 export const AppLink: FunctionComponent<Props> = ({
-  href = "/",
+  href = '/',
   children,
   ...MUIProps
 }) => (
