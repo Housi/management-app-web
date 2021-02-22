@@ -1,8 +1,9 @@
 import { FunctionComponent } from 'react';
-import { Logo, AppLink, BrandBackground } from '@components/ui';
+import { AppLink, BrandBackground } from '@components/ui';
 import Head from 'next/head';
 import { Box, Paper, Container } from '@material-ui/core';
 import UnlockIcon from '@assets/unlock.svg';
+import Logo from '@assets/logo.svg';
 
 type Props = {
   title?: string;
