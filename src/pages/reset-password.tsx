@@ -1,11 +1,18 @@
-import { GuestLayout } from '@layouts/GuestLayout';
+import Head from 'next/head';
 import { ResetForm } from '@modules/auth/ResetForm';
+import { RouteGuard } from '@components/ui';
+import { BrandLayout } from '@layouts/BrandLayout';
 
 const ResetPasswordView = () => {
   return (
-    <GuestLayout title="URB-E">
-      <ResetForm />
-    </GuestLayout>
+    <RouteGuard exclude={['user']}>
+      <Head>
+        <title>{'URB-E Reset password'}</title>
+      </Head>
+      <BrandLayout>
+        <ResetForm />
+      </BrandLayout>
+    </RouteGuard>
   );
 };
 

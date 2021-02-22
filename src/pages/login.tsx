@@ -1,20 +1,19 @@
-import { GuestLayout } from '@layouts/GuestLayout';
 import Head from 'next/head';
 import { RouteGuard } from '@components/ui';
 import { BrandLayout } from '@layouts/BrandLayout';
-import { ResetSuccess } from '@modules/auth/ResetSuccess';
+import { LoginForm } from '@modules/auth/LoginForm';
 
-const ResetSuccessView = () => {
+const LoginView = () => {
   return (
     <RouteGuard exclude={['user']}>
       <Head>
-        <title>{'URB-E Check email'}</title>
+        <title>{'URB-E Login'}</title>
       </Head>
       <BrandLayout>
-        <ResetSuccess />
+        <LoginForm />
       </BrandLayout>
     </RouteGuard>
   );
 };
 
-export default ResetSuccessView;
+export default LoginView;

@@ -1,14 +1,12 @@
-import { colors, createMuiTheme } from "@material-ui/core";
-import { softShadows } from "./shadows";
-import typography from "./typography";
-import { TextField } from "@components/ui";
+import { colors, createMuiTheme } from '@material-ui/core';
+import typography from './typography';
 
 export const theme = createMuiTheme({
   typography,
   overrides: {
     MuiInputBase: {
       input: {
-        "&::placeholder": {
+        '&::placeholder': {
           opacity: 1,
           color: colors.blueGrey[600],
         },
@@ -17,7 +15,7 @@ export const theme = createMuiTheme({
     MuiLinearProgress: {
       root: {
         borderRadius: 3,
-        overflow: "hidden",
+        overflow: 'hidden',
       },
     },
     MuiListItemIcon: {
@@ -27,17 +25,23 @@ export const theme = createMuiTheme({
     },
     MuiChip: {
       root: {
-        backgroundColor: "rgba(0,0,0,0.075)",
+        backgroundColor: 'rgba(0,0,0,0.075)',
       },
     },
     MuiButton: {
       root: {
         borderRadius: 50,
+        textTransform: 'none',
       },
+    },
+    MuiCssBaseline: {
+      // '@global': {
+      //   '@font-face': [raleway],
+      // },
     },
   },
   palette: {
-    type: "light",
+    type: 'light',
     background: {
       default: colors.common.white,
       paper: colors.common.white,
@@ -49,12 +53,11 @@ export const theme = createMuiTheme({
     action: {
       active: colors.blueGrey[600],
     },
-
     primary: {
-      main: "#52CAF5",
+      main: '#52CAF5',
     },
     secondary: {
-      main: "##f57d52",
+      main: '#f57d52',
     },
   },
   shape: {
@@ -62,13 +65,18 @@ export const theme = createMuiTheme({
   },
   props: {
     MuiButton: {
-      variant: "contained",
-      color: "primary",
+      variant: 'contained',
+      color: 'primary',
+      disableElevation: true,
     },
     MuiTextField: {
-      placeholder: "Enter",
-      variant: "outlined",
-      margin: "normal",
+      placeholder: 'Enter',
+      variant: 'outlined',
+      margin: 'normal',
+    },
+    MuiLink: {
+      color: 'secondary',
+      underline: 'always',
     },
   },
 });

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -13,17 +13,16 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
       "@ui/*": ["src/components/ui/*"],
-      "@utils/*": ["src/components/utils/*"],
       "@modules/*": ["src/components/modules/*"],
       "@layouts/*": ["src/components/layouts/*"],
       "@components/*": ["src/components/*"],
       "@hooks/*": ["src/hooks/*"],
-      "@assets/*": ["public/*"],
       "@styles/*": ["src/styles/*"],
-      "@api/*": ["src/api/*"]
+      "@api/*": ["src/api/*"],
+      //"@assets/*": this is aliased in .babelrc
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
