@@ -1,2 +1,2 @@
-export * from './GuestLayout';
+export * from './BrandLayout';
 export * from './AppLayout';
