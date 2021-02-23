@@ -34,11 +34,6 @@ export const theme = createMuiTheme({
         textTransform: 'none',
       },
     },
-    MuiCssBaseline: {
-      // '@global': {
-      //   '@font-face': [raleway],
-      // },
-    },
   },
   palette: {
     type: 'light',
