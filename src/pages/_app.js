@@ -1,6 +1,8 @@
 import Head from 'next/head';
-import { ThemeProvider, StylesProvider } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import { useEffect } from 'react';
+import { ThemeProvider as MUIThemeProvider } from '@material-ui/styles';
+import { CssBaseline } from '@material-ui/core';
+import { ThemeProvider } from 'styled-components';
 import { theme } from '@styles/theme';
 import { GlobalStyle } from '@styles/globalStyle';
 import { SWRConfig } from 'swr';
@@ -8,6 +10,13 @@ import { fetcher } from '@api/client';
 import { AuthProvider } from '@api/AuthContext';
 
 function MyApp({ Component, pageProps }) {
+  useEffect(() => {
+    const jssStyles = document.querySelector('#jss-server-side');
+    if (jssStyles && jssStyles.parentNode) {
+      jssStyles.parentNode.removeChild(jssStyles);
+    }
+  }, []);
+
   return (
     <>
       <Head>
@@ -18,17 +27,17 @@ function MyApp({ Component, pageProps }) {
           content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
         />
       </Head>
-      <StylesProvider injectFirst>
+      <MUIThemeProvider theme={theme} injectFirst>
         <ThemeProvider theme={theme}>
+          <CssBaseline />
           <GlobalStyle />
           <SWRConfig value={{ focusThrottleInterval: 15000, fetcher }}>
             <AuthProvider>
               <Component {...pageProps} />
-              <CssBaseline />
             </AuthProvider>
           </SWRConfig>
         </ThemeProvider>
-      </StylesProvider>
+      </MUIThemeProvider>
     </>
   );
 }
