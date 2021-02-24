@@ -1,50 +1,35 @@
-import React from 'react';
-import Document, { Head, Html, Main, NextScript } from 'next/document';
-import { ServerStyleSheet } from 'styled-components';
-import { ServerStyleSheets } from '@material-ui/styles';
-class MyDocument extends Document {
-  static async getInitialProps(ctx) {
-    const styledComponentsSheet = new ServerStyleSheet();
-    const materialSheets = new ServerStyleSheets();
-    const originalRenderPage = ctx.renderPage;
+// from https://js.plainenglish.io/ssr-with-next-js-styled-components-and-material-ui-b1e88ac11dfa
 
+import React from 'react';
+import NextDocument from 'next/document';
+import { ServerStyleSheet as StyledComponentSheets } from 'styled-components';
+import { ServerStyleSheets as MaterialUiServerStyleSheets } from '@material-ui/core/styles';
+export default class Document extends NextDocument {
+  static async getInitialProps(ctx) {
+    const styledComponentSheet = new StyledComponentSheets();
+    const materialUiSheets = new MaterialUiServerStyleSheets();
+    const originalRenderPage = ctx.renderPage;
     try {
       ctx.renderPage = () =>
         originalRenderPage({
           enhanceApp: (App) => (props) =>
-            styledComponentsSheet.collectStyles(
-              materialSheets.collect(<App {...props} />)
+            styledComponentSheet.collectStyles(
+              materialUiSheets.collect(<App {...props} />)
             ),
         });
-      const initialProps = await Document.getInitialProps(ctx);
+      const initialProps = await NextDocument.getInitialProps(ctx);
       return {
         ...initialProps,
-        styles: (
-          <React.Fragment>
+        styles: [
+          <React.Fragment key="styles">
             {initialProps.styles}
-            {materialSheets.getStyleElement()}
-            {styledComponentsSheet.getStyleElement()}
-          </React.Fragment>
-        ),
+            {materialUiSheets.getStyleElement()}
+            {styledComponentSheet.getStyleElement()}
+          </React.Fragment>,
+        ],
       };
     } finally {
-      styledComponentsSheet.seal();
+      styledComponentSheet.seal();
     }
   }
-
-  render() {
-    return (
-      <Html>
-        <Head>
-          <meta charSet="utf-8" />
-        </Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    );
-  }
 }
-
-export default MyDocument;
