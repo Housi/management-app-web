@@ -12,7 +12,15 @@ export const AuthProvider = ({ children }) => {
   });
   return (
     <AuthContext.Provider
-      value={{ user: data ? { ...data, role: 'user' } : { role: 'guest' } }}
+      value={{
+        user: data
+          ? {
+              ...data,
+              role: 'user',
+              fullName: `${data.first_name} ${data.last_name}`,
+            }
+          : { role: 'guest' },
+      }}
     >
       {data || error ? children : <LoaderScreen />}
     </AuthContext.Provider>
