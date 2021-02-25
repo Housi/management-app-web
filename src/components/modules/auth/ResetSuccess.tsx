@@ -1,24 +1,27 @@
+import { useTranslation } from 'react-i18next';
 import { FormBox, FormTitle, AppLink } from '@components/ui';
 import { Box, Button, Typography } from '@material-ui/core';
 
-export const ResetSuccess = () => (
-  <FormBox>
-    <FormTitle>Check your mail</FormTitle>
+export const ResetSuccess = () => {
+  const { t } = useTranslation('auth');
 
-    <Box>
-      <Typography>
-        {`We have sent instructions to reset your password`}
-      </Typography>
-      <Box py={2}>
-        <a href="mailto:" target="_blank">
-          <Button>Open Email App</Button>
-        </a>
-      </Box>
-      <Box>{`Did not receive the email?`}</Box>
+  return (
+    <FormBox>
+      <FormTitle>{t('resetSuccessTitle')}</FormTitle>
+
       <Box>
-        {`Check your spam or `}
-        <AppLink href={'/reset-password'}>resend email</AppLink>
+        <Typography>{t('resetSuccessInfo')}</Typography>
+        <Box py={2}>
+          <a href="mailto:" target="_blank">
+            <Button>{t('openEmail')}</Button>
+          </a>
+        </Box>
+        <Box>{t('notReceivedTitle')}</Box>
+        <Box>
+          {t('notReceivedText')}
+          <AppLink href={'/reset-password'}>{t('notReceivedPrompt')}</AppLink>
+        </Box>
       </Box>
-    </Box>
-  </FormBox>
-);
+    </FormBox>
+  );
+};

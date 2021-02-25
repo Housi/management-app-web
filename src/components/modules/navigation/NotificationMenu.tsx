@@ -11,6 +11,7 @@ import {
 } from '@material-ui/core';
 import BellIcon from '@assets/bell.svg';
 import CircleIcon from '@assets/circle.svg';
+import { useTranslation } from 'react-i18next';
 
 const notifications = [
   {
@@ -31,13 +32,17 @@ const notifications = [
 ];
 
 export const NotificationMenu = () => {
+  const { t } = useTranslation('navigation');
+
   return (
     <Dropdown
       id={'notification-menu'}
       toggle={
         <Box display={'flex'} alignItems={'center'} height={64} mr={2}>
           <IconButton
-            aria-label={`show ${notifications.length} new notifications`}
+            aria-label={t('newNotificationsLabel', {
+              count: notifications.length,
+            })}
             color="inherit"
           >
             <Badge
@@ -52,7 +57,7 @@ export const NotificationMenu = () => {
       }
     >
       <MenuList>
-        <ListSubheader disableSticky>{'New'}</ListSubheader>
+        <ListSubheader disableSticky>{t('New')}</ListSubheader>
         {notifications
           .filter(({ read }) => !read)
           .map(({ message, time }) => (

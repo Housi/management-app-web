@@ -8,8 +8,10 @@ import { GlobalStyle } from '@styles/globalStyle';
 import { SWRConfig } from 'swr';
 import { fetcher } from '@api/client';
 import { AuthProvider } from '@api/AuthContext';
+import { I18nextProvider } from 'react-i18next';
+import i18n from '@i18n/i18n';
 
-function MyApp({ Component, pageProps }) {
+function App({ Component, pageProps }) {
   useEffect(() => {
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles && jssStyles.parentNode) {
@@ -33,7 +35,9 @@ function MyApp({ Component, pageProps }) {
           <GlobalStyle />
           <SWRConfig value={{ focusThrottleInterval: 15000, fetcher }}>
             <AuthProvider>
-              <Component {...pageProps} />
+              <I18nextProvider i18n={i18n}>
+                <Component {...pageProps} />
+              </I18nextProvider>
             </AuthProvider>
           </SWRConfig>
         </ThemeProvider>
@@ -41,5 +45,6 @@ function MyApp({ Component, pageProps }) {
     </>
   );
 }
-
-export default MyApp;
+export default App;
+// const ExtendedApp = withSSR()(App);
+// export default <ExtendedApp initialLanguage={'en'} />;

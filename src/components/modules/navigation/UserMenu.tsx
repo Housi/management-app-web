@@ -1,6 +1,7 @@
 import Link from 'next/link';
-import { UserProfile, Dropdown, AppLink } from '@components/ui';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '@api/AuthContext';
+import { UserProfile, Dropdown, AppLink } from '@components/ui';
 import {
   MenuItem,
   MenuList,
@@ -13,6 +14,7 @@ import { ChevronRight } from '@material-ui/icons';
 
 export const UserMenu = () => {
   const { user } = useAuth();
+  const { t } = useTranslation('navigation');
 
   return (
     <Dropdown
@@ -23,14 +25,14 @@ export const UserMenu = () => {
         <MenuItem>
           <UserProfile avatarSize={64} user={user} pb={1}>
             <AppLink href={`/profile/${user.id}`} underline={'none'}>
-              {`View profile`}
+              {t('viewProfile')}
             </AppLink>
           </UserProfile>
         </MenuItem>
         <Divider />
         <MenuItem>
           <Link href={`/settings`}>
-            <ListItemText>{`Settings & Privacy`}</ListItemText>
+            <ListItemText>{t('settings')}</ListItemText>
           </Link>
           <ListItemIcon>
             <ChevronRight />
@@ -38,7 +40,7 @@ export const UserMenu = () => {
         </MenuItem>
         <MenuItem>
           <Link href={`/support`}>
-            <ListItemText>{`Help & Support`}</ListItemText>
+            <ListItemText>{t('support')}</ListItemText>
           </Link>
           <ListItemIcon>
             <ChevronRight />
@@ -50,7 +52,7 @@ export const UserMenu = () => {
             underline={'none'}
             href={process.env.NEXT_PUBLIC_LOGOUT}
           >
-            <ListItemText>{`Log Out`}</ListItemText>
+            <ListItemText>{t('logOut')}</ListItemText>
           </MUILink>
         </MenuItem>
       </MenuList>

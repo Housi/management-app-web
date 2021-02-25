@@ -22,7 +22,7 @@
       "@hooks/*": ["src/hooks/*"],
       "@styles/*": ["src/styles/*"],
       "@api/*": ["src/api/*"],
-      //"@assets/*": this is aliased in .babelrc
+      "@i18n/*": ["src/i18n/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.js"],
